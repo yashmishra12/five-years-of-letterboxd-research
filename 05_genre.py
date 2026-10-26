@@ -144,10 +144,10 @@ lbx.write_table(pd.DataFrame(rows).set_index(["component", "controls"]), "T27_re
 order = t24.index.tolist()           # genres sorted by adjusted step
 ypos = np.arange(len(order))
 fig, axes = plt.subplots(1, 3, figsize=(10.5, 5.4), sharey=True)
-panels = [(axes[0], t24["step (raw)"], t24["step"], "A  Step at June 2023 (archive, n = %d)" % len(br)),
-          (axes[1], t24["drift after (raw)"], t24["drift after"], "B  Drift after the change (archive)"),
+panels = [(axes[0], t24["step (raw)"], t24["step"], "(a)"), 
+          (axes[1], t24["drift after (raw)"], t24["drift after"], "(b)"),
           (axes[2], t26["n2021>=200, raw"], t26["n2021>=200, adjusted"],
-           "C  Total change 2021→2026 (panel, ≥200 ratings in 2021, n = %d)" % len(s))]
+          "(c)")]
 for ax, raw, adj, title in panels:
     raw, adj = raw.loc[order], adj.loc[order]
     ax.errorbar(raw.coef, ypos + 0.17, xerr=[raw.coef - raw.ci_lo, raw.ci_hi - raw.coef], fmt="o", color=lbx.S2,

@@ -1,7 +1,7 @@
-numpy
-pandas
-scipy
-statsmodels
-patsy
-matplotlib
-tabulate
+matplotlib==3.11.2
+numpy==2.5.4
+pandas==3.0.6
+patsy==1.0.3
+scipy==1.18.1
+statsmodels==0.15.0
+tabulate==0.10.0

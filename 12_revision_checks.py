@@ -220,7 +220,6 @@ ax.axhline(0, color=lbx.AXIS, lw=1, zorder=1)
 ax.set_xticks(range(len(bands)), [f"{b}\n({int(t58.loc[('formula switch', b), 'films']):,} films)" for b in bands])
 ax.set_xlabel("ratings in February 2021")
 ax.set_ylabel("change 2021 to 2026, stars")
-ax.set_title("Film-level spread: thick bar 25th-75th percentile, thin bar 10th-90th", fontsize=9)
 ax.legend(loc="upper right", fontsize=7)
 lbx.save(fig, "fig10_decomposition_spread_by_size")
 

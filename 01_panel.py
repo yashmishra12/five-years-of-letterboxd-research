@@ -121,7 +121,6 @@ ax.text(a.d.mean() + 0.02, ax.get_ylim()[1] * 0.92,
         color=lbx.INK, fontsize=8, va="top")
 ax.set_xlabel("Change in displayed rating, Feb 2021 → Oct 2026 (stars)")
 ax.set_ylabel("Films")
-ax.set_title(f"Most films' ratings rose (n = {len(a):,})", loc="left")
 lbx.save(fig, "fig1_change_distribution")
 plt.close(fig)
 
@@ -140,7 +139,6 @@ for lo, hi, lab, c in bands:
 ax.axhline(0, color=lbx.INK2, lw=0.8)
 ax.set_xlabel("Displayed rating in Feb 2021 (stars, 0.25-star bins)")
 ax.set_ylabel("Mean change to Oct 2026 (stars)")
-ax.set_title("Low-rated films rose most, at every audience size", loc="left")
 ax.legend(loc="upper right")
 lbx.save(fig, "fig2_change_by_level")
 plt.close(fig)

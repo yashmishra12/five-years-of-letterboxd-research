@@ -110,7 +110,7 @@ lbx.write_table(t45b, "T45b_decomposition_by_level_and_size", floatfmt=".3f")
 
 # fig6: members / decay / switch by 2021 raw level, for >= 200-rating films in two size bands
 fig, axes = plt.subplots(1, 2, figsize=(8.6, 3.2), sharey=True)
-for ax, size in zip(axes, ["200-999", ">=1,000"]):
+for ax, size, part in zip(axes, ["200-999", ">=1,000"], ["(a)", "(b)"]):
     g = t45b.loc[size]
     x = np.arange(len(g))
     for k, (c, lab, col) in enumerate([("members", "raw-mean change", lbx.S1),
@@ -120,7 +120,7 @@ for ax, size in zip(axes, ["200-999", ">=1,000"]):
     ax.scatter(x, g.displayed, marker="D", s=26, color=lbx.INK, zorder=3, label="displayed change")
     ax.axhline(0, color=lbx.INK2, lw=0.8)
     ax.set_xticks(x, [f"{i}\n(n={int(v):,})" for i, v in zip(g.index, g.films)])
-    ax.set_title(f"{size} ratings in Feb 2021")
+    ax.set_title(part, loc="left")
     ax.set_xlabel("2021 raw mean (stars)")
 axes[0].set_ylabel("mean change 2021-2026, stars")
 axes[1].legend(loc="upper right", fontsize=7)
@@ -179,8 +179,7 @@ for off, idx, col in [(-w / 2, lo_i, lbx.S1), (w / 2, hi_i, lbx.S2)]:
 ax.set_xticks(STARS)
 ax.set_xlabel("star rating")
 ax.set_ylabel("share of ratings, %")
-ax.set_title(f"Same number of ratings ({int(nn[lo_i]):,}); the blue film's distribution dominates, its score is lower",
-             fontsize=8.5)
+
 ax.set_ylim(0, 100 * max((M[lo_i] / M[lo_i].sum()).max(), (M[hi_i] / M[hi_i].sum()).max()) * 1.35)
 ax.legend(loc="upper right", fontsize=7)
 lbx.save(fig, "fig9_dominance_reversal_example")

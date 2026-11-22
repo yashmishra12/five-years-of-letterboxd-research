@@ -1,7 +1,8 @@
 # Five Years of Letterboxd — analysis code
 
 Analysis pipeline for the paper *"Five years of Letterboxd: a longitudinal audit of
-how a rating-rule change alters displayed film scores"* (Y. Mishra). The code
+how a rating-rule change alters displayed film scores"* (Y. Mishra), submitted to the
+*Journal of Computational Social Science*. The code
 reconstructs and validates Letterboxd's pre-June-2023 rating rule, decomposes the
 2021→2026 change in displayed scores into a raw-mean change, a change in the old
 rule's adjustment, and a 2026 rule contrast, and runs the timing, dominance,
@@ -40,17 +41,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-`requirements.txt`:
-
-```
-numpy
-pandas
-scipy
-statsmodels
-patsy
-matplotlib
-tabulate
-```
+`requirements.txt` pins the exact versions the paper's results were produced with
+(numpy 2.5.4, pandas 3.0.6, scipy 1.18.1, statsmodels 0.15.0, patsy 1.0.3,
+matplotlib 3.11.2, tabulate 0.10.0).
 
 ## Data
 
@@ -111,7 +104,29 @@ Running the pipeline writes:
   (`jump_per_film.csv`, `panel_decomposition.csv`, `pilot_split.csv`,
   `identity_review.csv`)
 
-These are regenerated from the inputs and are not tracked in git.
+These are regenerated from the inputs and are not tracked in git. A full run takes a
+few minutes on a laptop.
+
+## Paper figures
+
+The scripts name figures by the order in which they were written. The paper
+numbers them differently. `figures/Fig1.pdf`–`Fig8.pdf` in this repository are the
+exact files submitted with the paper. Running the pipeline regenerates them under
+the names below.
+
+| Paper | Generated file | Script |
+|-------|----------------|--------|
+| Fig. 1 | `fig1_change_distribution` | `01_panel.py` |
+| Fig. 2 | `fig2_change_by_level` | `01_panel.py` |
+| Fig. 3 | `fig8_decomposition_by_size` | `07_histogram_analysis.py` |
+| Fig. 4 | `fig10_decomposition_spread_by_size` | `12_revision_checks.py` |
+| Fig. 5 | `fig9_dominance_reversal_example` | `09_new_rule.py` |
+| Fig. 6 | `fig5_formula_jump` | `02_jump.py` |
+| Fig. 7 | `fig6_level_members_vs_formula` | `09_new_rule.py` |
+| Fig. 8 | `fig7_genre_effects` | `05_genre.py` |
+
+`fig3_change_by_cohort`, `fig4_change_vs_growth` and `figS1`–`figS4` are
+supporting figures that do not appear in the paper.
 
 ## Notes
 
@@ -123,8 +138,8 @@ These are regenerated from the inputs and are not tracked in git.
 ## Citation
 
 > Mishra, Y. (2026). Five years of Letterboxd: a longitudinal audit of how a
-> rating-rule change alters displayed film scores. *Online Social Networks and
-> Media* (under review).
+> rating-rule change alters displayed film scores. *Journal of Computational
+> Social Science* (under review).
 
 ## License
 
